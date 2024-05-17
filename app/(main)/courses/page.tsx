@@ -1,5 +1,4 @@
 import { getCourses } from "@/db/queries";
-
 import { List } from "./list";
 
 const  CoursePage= async () => {
