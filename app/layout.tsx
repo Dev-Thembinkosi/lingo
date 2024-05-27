@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 
-const font = Nunito({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Create Next App",
