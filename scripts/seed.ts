@@ -41,9 +41,6 @@ const main = async () => {
                 imageSrc: "/hr.svg",
             },
             
-            
-            
-
 
         ]);
 
@@ -52,7 +49,7 @@ const main = async () => {
 
     } catch (error) {
         console.error(error);
-        throw new Error("Failed to seet the database")
+        throw new Error("Failed to seed the database")
     }
     
 };
