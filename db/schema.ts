@@ -41,7 +41,7 @@ export const lessons = pgTable("lessons", {
 });
 
 export const lessonsRelations = relations(lessons, ({one, many}) =>({
-  units: one(units, {
+  unit: one(units, {
     fields: [lessons.unitId],
     references: [units.id]
   }),
@@ -57,6 +57,7 @@ export const challenges = pgTable("challenges", {
   lessonId: integer("lesson_id").references(() => lessons.id, {onDelete: "cascade"}).notNull(),
   type: challengesEnum("type").notNull(),
   question: text("question").notNull(),
+  order: integer("order").notNull(),
 
 });
 
