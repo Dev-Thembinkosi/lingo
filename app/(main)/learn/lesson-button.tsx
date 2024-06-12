@@ -1,9 +1,9 @@
-"use-client";
+"use client";
 
 
 import Link from "next/link";
 import { Check, Crown, Star } from "lucide-react";
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -63,7 +63,7 @@ export const LessonButton = ({
             <div 
                 className="relative"
                 style={{
-                    right: `${rightPosition}`,
+                    right: `${rightPosition}px`,
                     marginTop: isFirst && !isCompleted ? 60 : 24,
                 }}
             >
