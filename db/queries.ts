@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs";
 
 import db from "./drizzle";
-import { challengeProgress, courses, units, userProgress } from "./schema";
+import { challengeProgress, courses, units, userProgress, lessons } from "./schema";
 
 
 
@@ -95,7 +95,7 @@ export const getCourseProgress = cache(async ()=>{
         return null;
     }
 
-    const unitsInActiveCouurse = await db.query.units.findMany({
+    const unitsInActiveCourse = await db.query.units.findMany({
         orderBy: (units, {asc}) =>[asc(units.order)],
         where: eq(units.courseId, userProgress.activeCourseId),
         with: {
@@ -108,12 +108,60 @@ export const getCourseProgress = cache(async ()=>{
                             challengeProgress: {
                                 where: eq(challengeProgress.userId, userId),
 
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                            },
+                        },
+                    },
+                },
+            },
+        },
 
+    });
+
+    const firstUncompletedLesson = unitsInActiveCourse
+        .flatMap((unit) => unit.lessons)
+        .find((lesson) => {
+            return lesson.challenges.some((challenge) => {
+                return !challenge.challengeProgress || challenge.challengeProgress.length == 0;
+            });
+        });
+
+        return {
+            activeLesson: firstUncompletedLesson,
+            activeLessonId: firstUncompletedLesson?.id,
+        };
+
+
+    
+});
+
+
+export const getLesson = cache(async (id?: number) => {
+    const { userId } = await auth();
+
+    if(!userId){
+        return null;
+    }
+
+    const courseProgress = await getCourseProgress();
+
+    const lessonId = id || courseProgress?.activeLessonId;
+
+    if (!lessonId){
+        return null;
+    }
+
+    const data = await db.query.lessons.findFirst({
+        where: eq(lessons.id, lessonId),
+        with: {
+            challenges: {
+                orderBy: (challenges, {asc}) => [asc(challenges.order)],
+                with: {
+                    challengeOptions: true,
+                    challengeProgress: {
+                        where: eq(challengeProgress.userId, userId),
+                    },
+                },
+            },
+        },
     });
 });
