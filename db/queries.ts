@@ -121,7 +121,9 @@ export const getCourseProgress = cache(async ()=>{
         .flatMap((unit) => unit.lessons)
         .find((lesson) => {
             return lesson.challenges.some((challenge) => {
-                return !challenge.challengeProgress || challenge.challengeProgress.length == 0;
+                return !challenge.challengeProgress 
+                || challenge.challengeProgress.length == 0 
+                || challenge.challengeProgress.some((progress) => progress.completed == false);
             });
         });
 
@@ -164,4 +166,22 @@ export const getLesson = cache(async (id?: number) => {
             },
         },
     });
+
+    if(!data || !data.challenges){
+        return null;
+    }
+
+    const normalizeChallenges = data.challenges.map((challenge) =>{
+        const completed = challenge.challengeProgress 
+        && challenge.challengeProgress.length > 0
+        && challenge.challengeProgress.every((progress) => progress.completed)
+
+        return {...challenge, completed};
+
+    });
+
+    return { ...data, challenges: normalizeChallenges }
+
+
+
 });
