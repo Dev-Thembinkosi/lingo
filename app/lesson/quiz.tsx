@@ -35,6 +35,15 @@ export const Quiz = ({
                 percentage={percentage}
                 hasActiveSubscription={!!userSubscription?.isActive}
             />
+
+            <div className="flex-1">
+                <div className="h-full flex items-center justify-center">
+                    
+
+                </div>
+            </div>
+
+
         </>
     )
 }
