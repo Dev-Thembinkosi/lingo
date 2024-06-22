@@ -3,6 +3,7 @@
 import { challengeOptions, challenges } from "@/db/schema";
 import { useState } from "react";
 import { Header } from "./header";
+import { QuestionBubble } from "./question-bubble";
 
 type Props = {
 
@@ -55,6 +56,8 @@ export const Quiz = ({
                             {title}
                         </h1>
                         <div>
+                            {/* Change back to type ASSIST */}
+                            {challenge.type === "SELECT" && (<QuestionBubble question={challenge.question}/>)}
 
                         </div>
 
