@@ -60,7 +60,7 @@ const main = async () => {
                 id: 1,
                 courseId: 1, //Spanish
                 title: "unit 1",
-                description: "Leaan the fundamentals of spanish",
+                description: "Learn the fundamentals of spanish",
                 order: 1,
             },
         ]);
@@ -155,16 +155,6 @@ const main = async () => {
                 audioSrc: "/es_robot.pm3",
             },
         ]);
-
-
-        
-
-
-        
-
-
-
-     
 
         console.log("seeding finished");
         
