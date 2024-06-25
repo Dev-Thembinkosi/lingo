@@ -1,10 +1,11 @@
 "use client";
 
-import { challengeOptions, challenges } from "@/db/schema";
 import { useState } from "react";
+import { challengeOptions, challenges } from "@/db/schema";
 import { Header } from "./header";
-import { QuestionBubble } from "./question-bubble";
+
 import Challenge from "./challenge";
+import { QuestionBubble } from "./question-bubble";
 
 type Props = {
 

@@ -8,7 +8,7 @@ type Props ={
     status: "correct" | "wrong" | "none";
     selectedOption?: number;
     disabled?: boolean;
-    type: typeof challenges.$inferSelect["type"]
+    type: typeof challenges.$inferSelect["type"];
 }
 
 const Challenge = ({options, onSelect, status, selectedOption, disabled, type}: Props) => {
@@ -25,6 +25,7 @@ const Challenge = ({options, onSelect, status, selectedOption, disabled, type}: 
                     text={option.text}
                     imageSrc={option.imageSrc}
                     shortcut={`${i + 1}`}
+                    selected={selectedOption === option.id}
                     onClick={() => onSelect(option.id)}
                     status={status}
                     audioSrc={option.audioSrc}

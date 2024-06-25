@@ -99,8 +99,6 @@ const main = async () => {
                 title: "Verbs",
             },
 
-
-
             
             {
                 id: 5,
@@ -132,7 +130,7 @@ const main = async () => {
                 imageSrc: "/man.svg",
                 correct: true,
                 text: "el hombre",
-                audioSrc: "/es_man.pm3",
+                audioSrc: "/es_man.mp3",
             },
 
 
@@ -142,7 +140,7 @@ const main = async () => {
                 imageSrc: "/woman.svg",
                 correct: false,
                 text: "la mujer",
-                audioSrc: "/es_woman.pm3",
+                audioSrc: "/es_woman.mp3",
             },
 
 
@@ -152,7 +150,7 @@ const main = async () => {
                 imageSrc: "/robot.svg",
                 correct: false,
                 text: "el robot",
-                audioSrc: "/es_robot.pm3",
+                audioSrc: "/es_robot.mp3",
             },
         ]);
 
