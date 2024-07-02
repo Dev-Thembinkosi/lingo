@@ -10,6 +10,7 @@ import { Footer } from "./footer";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { initializeTraceState } from "next/dist/trace";
 import { toast } from "sonner";
+import { reduceHearts } from "@/actions/user-progress";
 
 type Props = {
 
@@ -33,7 +34,7 @@ export const Quiz = ({
     userSubscription,
 }: Props) => {
 
-    const [Pending, startTransition] = useTransition();
+    const [pending, startTransition] = useTransition();
 
     const [hearts, setHearts] = useState(initialHearts);
     const [percentage, setPercentage] = useState(initialPercentage);
@@ -106,7 +107,22 @@ export const Quiz = ({
                     .catch(() => toast.error("Something went wrong, please try again"))
             })
         }else {
-            console.error("Incorrect Option");
+            startTransition(() =>{
+                reduceHearts(challenge.id)
+                .then((response) =>{
+                    if (response?.error === "hearts"){
+                        console.error("Missig hearts")
+                        return;
+                    }
+
+                    setStatus("wrong");
+
+                    if(!response?.error){
+                        setHearts((prev) => Math.max(prev -1, 0));
+                    }
+                })
+                .catch(() => toast.error("Something went wrong. Please try gain."))
+            });
         }
     }
 
@@ -136,7 +152,7 @@ export const Quiz = ({
                                 onSelect={onSelect}  
                                 status={status}
                                 selectedOption={selectedOption}
-                                disabled={false}
+                                disabled={pending}
                                 type={challenge.type}  
                             />
                         </div>
@@ -144,7 +160,7 @@ export const Quiz = ({
                 </div>
             </div>
             <Footer
-                disabled={!selectedOption}
+                disabled={pending || !selectedOption}
                 onCheck={onContinue}
                 status={status}
             />
