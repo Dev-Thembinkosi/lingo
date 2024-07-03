@@ -11,11 +11,12 @@ import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { initializeTraceState } from "next/dist/trace";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
-import { useAudio, useWindowSize } from "react-use";
+import { useAudio, useWindowSize, useMount } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
 import { useRouter } from "next/navigation";
 import { useHeartsModal } from "@/store/use-hearts-modal";
+import { usePracticeModal } from "@/store/use-practice-modal";
 
 type Props = {
 
@@ -41,6 +42,13 @@ export const Quiz = ({
 
 
     const {open: openHeartsModal } = useHeartsModal();
+    const {open: openPracticeModal } = usePracticeModal();
+
+    useMount(() =>{
+        if(initialPercentage === 100){
+            openPracticeModal();
+        }
+    })
 
     const { width, height } = useWindowSize();
 
