@@ -1,7 +1,10 @@
+import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import { Items } from "./items";
 
 
 
@@ -27,6 +30,32 @@ const shopPage = async () => {
                 
                 />
             </StickyWrapper>
+
+            <FeedWrapper>
+                <div className="w-full flex flex-col items-center">
+                    <Image 
+                        src="/shop.svg"
+                        alt="Shop"
+                        height={90}
+                        width={90}
+                    />
+                    <h1 className="text-xenter font-bold text-neutral-800 text-2xl my-6">
+                        Shop
+                    </h1>
+
+                    <p className="text-muted-foreground text-center text-lg mb-6">
+                        Spend your points on cool stuff.
+                    </p>
+
+                    <Items
+                        hearts={userProgress.hearts}
+                        points={userProgress.points}
+                        hasSubcription={false} 
+                    
+                    />
+
+                </div>
+            </FeedWrapper>
         </div>
     )
 }
