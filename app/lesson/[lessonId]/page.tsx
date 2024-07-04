@@ -9,7 +9,7 @@ type Props = {
 };
 
 
-const LessonIdPage = async ( { params } : Props ) => {
+const LessonIdPage = async ( { params, } : Props ) => {
     const lessonData = getLesson(params.lessonId);
     const userProgressData = getUserProgress();
 

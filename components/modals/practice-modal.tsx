@@ -58,11 +58,8 @@ export const PracticeModal = () => {
                             I understand
                         </Button>
                     </div>
-
                 </DialogFooter>
             </DialogContent>
-
-
         </Dialog>
     );
 
