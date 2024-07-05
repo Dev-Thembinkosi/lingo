@@ -20,7 +20,7 @@ export const Items = ({hearts, points, hasSubcription}: Props) => {
 
     const [pending, startTransition] = useTransition();
 
-    const onRefillHearts = () =>{
+    const onRefillHearts = () => {
         if(pending || hearts === 5 || points <  POINTS_TO_REFILL ){
 
             return;
@@ -30,7 +30,6 @@ export const Items = ({hearts, points, hasSubcription}: Props) => {
             .catch(() => toast.error("Something went wrong"))
         })
     }
-
 
 
     return ( 
