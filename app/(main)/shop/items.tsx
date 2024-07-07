@@ -3,6 +3,7 @@
 import { refillHearts } from "@/actions/user-progress";
 import { createStripeUrl } from "@/actions/user-subscription";
 import { Button } from "@/components/ui/button";
+import { PersonStandingIcon } from "lucide-react";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -97,8 +98,8 @@ export const Items = ({hearts, points, hasActiveSubscription}: Props) => {
                         Unlimited hearts
                     </p>
                 </div>
-                <Button onClick={onUpgrade} disabled={pending || hasActiveSubscription}>
-                    {hasActiveSubscription ? "active" : "upgrade"}
+                <Button onClick={onUpgrade} disabled={pending}>
+                    {hasActiveSubscription ? "settings" : "upgrade"}
                 </Button>
 
             </div>
