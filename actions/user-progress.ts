@@ -9,10 +9,11 @@ import  db  from "@/db/drizzle";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
 import { revalidatePath } from "next/cache";
 import { and, eq } from "drizzle-orm";
+import { POINTS_TO_REFILL } from '@/constants';
 
 
 
-const POINTS_TO_REFILL = 10;
+
 
 
 
@@ -30,8 +31,6 @@ export const upsertUserProgress = async (courseId: number) => {
         throw new Error("Course not found");
 
     }
-
-   
 
     if(!course.units.length  || !course.units[0].lessons.length){
         throw new Error("Course is empty");
