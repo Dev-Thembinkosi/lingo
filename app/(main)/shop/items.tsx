@@ -78,13 +78,10 @@ export const Items = ({hearts, points, hasActiveSubscription}: Props) => {
                             <p>
                                 {POINTS_TO_REFILL}
                             </p>
-
                         </div>
                     )}
-
                 </Button>
             </div>
-
             <div className="flex items-center w-full p-4 pt-8 gap-x-4 border-t-2">
                 <Image 
                     src="/unlimited.svg"
@@ -101,9 +98,7 @@ export const Items = ({hearts, points, hasActiveSubscription}: Props) => {
                 <Button onClick={onUpgrade} disabled={pending}>
                     {hasActiveSubscription ? "settings" : "upgrade"}
                 </Button>
-
             </div>
-
         </ul>
      );
 }

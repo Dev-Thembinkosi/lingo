@@ -8,7 +8,7 @@ type Props = {
 
 
 export const ResultCard = ({value, variant}:Props) => {
-    const imageSrc = variant === "hearts" ? "heart.svg" : "points.svg";
+    const imageSrc = variant === "hearts" ? "/heart.svg" : "/points.svg";
 
 
 
@@ -36,12 +36,9 @@ export const ResultCard = ({value, variant}:Props) => {
                     height={30} 
                     width={30} 
                     className="mr-1.5"
-                />
-                
+                />                
                 {value}
-
             </div>
-            
         </div>
     )
 }
