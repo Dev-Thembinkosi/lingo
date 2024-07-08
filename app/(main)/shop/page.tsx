@@ -5,6 +5,7 @@ import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Items } from "./items";
+import { Promo } from "@/components/promo";
 
 
 
@@ -33,6 +34,8 @@ const shopPage = async () => {
                     hasActiveSubscription={isPro}
                 
                 />
+
+            {!isPro && (<Promo />)}
             </StickyWrapper>
 
             <FeedWrapper>

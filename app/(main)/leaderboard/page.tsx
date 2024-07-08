@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import { Promo } from "@/components/promo";
 
 
 
@@ -37,6 +38,8 @@ const LeaderboaardPage = async () => {
                     hasActiveSubscription={isPro}
                 
                 />
+
+            {!isPro && (<Promo />)}
             </StickyWrapper>
 
             <FeedWrapper>
