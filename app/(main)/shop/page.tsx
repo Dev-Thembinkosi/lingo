@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Items } from "./items";
 import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
+
 
 
 
@@ -36,6 +38,8 @@ const shopPage = async () => {
                 />
 
             {!isPro && (<Promo />)}
+            <Quests points={userProgress.points}/>
+
             </StickyWrapper>
 
             <FeedWrapper>

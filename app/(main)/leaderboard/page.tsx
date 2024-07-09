@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Separator } from "@radix-ui/react-separator";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
 
 
 
@@ -40,6 +41,8 @@ const LeaderboaardPage = async () => {
                 />
 
             {!isPro && (<Promo />)}
+            <Quests points={userProgress.points} />
+            
             </StickyWrapper>
 
             <FeedWrapper>
