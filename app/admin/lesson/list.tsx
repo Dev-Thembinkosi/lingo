@@ -1,4 +1,4 @@
-import {Datagrid, List, NumberField, ReferenceField, TextField} from "react-admin";
+import { Datagrid, List, NumberField, ReferenceField, TextField } from "react-admin";
 
 export const LessonList = () =>{
     return(

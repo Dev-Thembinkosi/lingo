@@ -1,7 +1,7 @@
-import {SimpleForm, Create, required, TextInput, ReferenceInput, NumberInput} from "react-admin";
+import { SimpleForm, Create, required, TextInput, ReferenceInput, NumberInput } from "react-admin";
 
 export const LessonCreate = () =>{
-    return(
+    return (
     <Create>
         <SimpleForm>
             <TextInput source="title" validate={[required()]} label="Title" />

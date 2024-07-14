@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
 
-export const GET = async (req: Request, {params}: {params:{lessonId: number}}) =>{
+export const GET = async (req: Request, {params}: {params:{lessonId: number}}) => {
 
     if(!isAdmin()){
         return new NextResponse("Unauthorised", {status: 403})
@@ -20,7 +20,7 @@ export const GET = async (req: Request, {params}: {params:{lessonId: number}}) =
 }
 
 
-export const PUT = async (req: Request, {params}: {params:{lessonId: number}}) =>{
+export const PUT = async (req: Request, {params}: {params:{lessonId: number}}) => {
 
     if(!isAdmin()){
         return new NextResponse("Unauthorised", {status: 403})
@@ -34,7 +34,6 @@ export const PUT = async (req: Request, {params}: {params:{lessonId: number}}) =
 
     return NextResponse.json(data[0])
 }
-
 
 export const DELETE = async (req: Request, {params}: {params:{lessonId: number}}) =>{
 
