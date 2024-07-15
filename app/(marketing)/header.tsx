@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
-import { ClerkLoading, ClerkLoaded, SignedIn, SignedOut,SignInButton, UserButton} from "@clerk/nextjs";
+import { ClerkLoading, ClerkLoaded, SignedIn, SignedOut,SignInButton, UserButton } from "@clerk/nextjs";
 
 
 
-export const Header = () =>{
+export const Header = () => {
     return (
         <header className="h-20 w-full border-b-2 border-slate-200 px-4">
             <div className="lg:max-w-screen-lg mx-auto flex items-center justify-between h-ful">
@@ -20,11 +20,9 @@ export const Header = () =>{
                     <SignedIn>
                         <UserButton afterSignOutUrl="/"/>
                     </SignedIn>
-
                     <SignedOut>
                         <SignInButton mode="modal" afterSignInUrl="/learn" afterSignUpUrl="/learn">
-                            <Button size="lg" variant="guost">Login</Button>
-
+                            <Button size="lg" variant="guost"> Login </Button>
                         </SignInButton>
                     </SignedOut>
                 </ClerkLoaded>
