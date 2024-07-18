@@ -12,13 +12,12 @@ export const GET = async (req: Request, {params}: {params:{lessonId: number}}) =
     }
 
 
-    const data = await db.query.courses.findFirst({
+    const data = await db.query.lessons.findFirst({
         where: eq(lessons.id, params.lessonId), 
     });
 
     return NextResponse.json(data);
 }
-
 
 export const PUT = async (req: Request, {params}: {params:{lessonId: number}}) => {
 

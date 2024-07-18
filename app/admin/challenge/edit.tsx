@@ -1,6 +1,6 @@
 import { SimpleForm, Edit, required, TextInput, ReferenceInput, NumberInput, SelectInput } from "react-admin";
 
-export const challengeEdit = () =>{
+export const ChallengeEdit = () =>{
     return (
     <Edit>
         <SimpleForm>

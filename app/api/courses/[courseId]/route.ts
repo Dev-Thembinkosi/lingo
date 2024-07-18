@@ -5,7 +5,9 @@ import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 
 
-export const GET = async (req: Request, {params}: {params:{courseId: number}}) =>{
+export const GET = async (
+    req: Request,
+    { params }: { params: {courseId: number}}) => {
 
     if(!isAdmin()){
         return new NextResponse("Unauthorised", {status: 403})
@@ -16,7 +18,7 @@ export const GET = async (req: Request, {params}: {params:{courseId: number}}) =
         where: eq(courses.id, params.courseId), 
     });
 
-    return NextResponse.json(data)
+    return NextResponse.json(data);
 }
 
 

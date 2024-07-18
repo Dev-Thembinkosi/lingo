@@ -6,6 +6,7 @@ export const ChallengeList = () => {
         <Datagrid rowClick="edit">
             <TextField source="id"/>
             <TextField source="question"/>
+            
             <SelectField 
                 source="type"
                 choices={[

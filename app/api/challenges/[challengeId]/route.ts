@@ -12,7 +12,7 @@ export const GET = async (req: Request, {params}: {params:{challengeId: number}}
     }
 
 
-    const data = await db.query.courses.findFirst({
+    const data = await db.query.challenges.findFirst({
         where: eq(challenges.id, params.challengeId), 
     });
 
