@@ -65,7 +65,7 @@ const App = () => {
         />
 
         <Resource 
-            name="challengesOptions" 
+            name="challengeOptions" 
             list={ChallengeOptionsList} 
             create={ChallengeOptionCreate}
             edit={ChallengeOptionEdit}

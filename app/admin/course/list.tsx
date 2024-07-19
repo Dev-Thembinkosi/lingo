@@ -1,7 +1,7 @@
 import {Datagrid, List, TextField} from "react-admin";
 
 export const CourseList = () =>{
-    return(
+    return (
     <List>
         <Datagrid rowClick="edit">
             <TextField source="id"/>

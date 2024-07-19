@@ -7,10 +7,12 @@ import { NextResponse } from 'next/server';
 
 export const GET = async (
     req: Request,
-    { params }: { params: {courseId: number}}) => {
+    { params }: { params: { courseId: number }}
+
+) => {
 
     if(!isAdmin()){
-        return new NextResponse("Unauthorised", {status: 403})
+        return new NextResponse("Unauthorised", { status: 401 })
     }
 
 
@@ -22,10 +24,14 @@ export const GET = async (
 }
 
 
-export const PUT = async (req: Request, {params}: {params:{courseId: number}}) =>{
+export const PUT = async (
+    req: Request,
+    { params }: { params: { courseId: number }}
+
+) =>{
 
     if(!isAdmin()){
-        return new NextResponse("Unauthorised", {status: 403})
+        return new NextResponse("Unauthorised", {status: 401})
     }
 
     const body = await req.json();
@@ -38,7 +44,11 @@ export const PUT = async (req: Request, {params}: {params:{courseId: number}}) =
 }
 
 
-export const DELETE = async (req: Request, {params}: {params:{courseId: number}}) =>{
+export const DELETE = async (
+    req: Request,
+    { params }: { params: { courseId: number }}
+
+) => {
 
     if(!isAdmin()){
         return new NextResponse("Unauthorised", {status: 403})
@@ -46,7 +56,7 @@ export const DELETE = async (req: Request, {params}: {params:{courseId: number}}
 
 
     const data = await db.delete(courses)
-    .where(eq(courses.id, params.courseId)).returning();
+        .where(eq(courses.id, params.courseId)).returning();
 
     return NextResponse.json(data[0])
-}
+};
