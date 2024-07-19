@@ -7,7 +7,7 @@ import {
   TextField,
 } from "react-admin";
 
-export const ChallengeOptionsList = () => {
+export const ChallengeOptionList = () => {
   return (
     <List>
       <Datagrid rowClick="edit">
